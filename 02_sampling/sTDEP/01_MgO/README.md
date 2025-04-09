@@ -45,7 +45,7 @@ In the folder `sampling.300K`, create a new folder `iter.000` and go into it.
 
 Copy your unitcell, supercell and dielectric properties inside this folder
 ```bash
-cp ../../infile.ucposcar ../../outfile.ssposcar ../../infile.lotosplitting .
+cp ../../infile.ucposcar ../outfile.ssposcar ../../infile.lotosplitting .
 ```
 
 Now we will create 4 configurations at 300K with a fake model having a maximum phonon frequency of 20 THz.
@@ -87,7 +87,7 @@ For each steps, this is what you have to do
 1. Go back in `sampling.300K` and create a folder `iter.n`, with n the current step
 2. Copy the input files in the new folder `iter.n`
 3. Compute the forces on the configurations generated at the last step with `sokrates_compute --folder-model ../../module ../iter.n-1/aims_conf* --format=aims --tdep`. This will create the infiles with displacements and forces for TDEP (iter.n-1 is the previous iteration. So if you are in iteration 002, it should read iter.001).
-4. Extract the force constants using `extract_forceconstant -rc2 10 --polar`
+4. Extract the force constants using `extract_forceconstants -rc2 10 --polar`
 5. Copy the outfile force constants as an infile using `ln -sf outfile.forceconstant infile.forceconstant`
 6. Compute the phonons (and/or the property you want to converge) using `phonon_dispersion_relations --dos` 
 7. Check for convergence by comparing with previous iterations and exit if you are converged
