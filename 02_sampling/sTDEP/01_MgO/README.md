@@ -86,7 +86,7 @@ For each steps, this is what you have to do
 
 1. Go back in `sampling.300K` and create a folder `iter.n`, with n the current step
 2. Copy the input files in the new folder `iter.n`
-3. Compute the forces on the configurations generated at the last step with `sokrates_compute --folder-model ../../module ../iter.n-1/aims_conf* --format=aims --tdep`. This will create the infiles with displacements and forces for TDEP (iter.n-1 is the previous iteration. So if you are in iteration 002, it should read iter.001).
+3. Compute the forces on the configurations generated at the last step with `sokrates_compute --float32 --folder-model ../../module ../iter.n-1/aims_conf* --format=aims --tdep`. This will create the infiles with displacements and forces for TDEP (iter.n-1 is the previous iteration. So if you are in iteration 002, it should read iter.001).
 4. Extract the force constants using `extract_forceconstant -rc2 10 --polar`
 5. Copy the outfile force constants as an infile using `ln -sf outfile.forceconstant infile.forceconstant`
 6. Compute the phonons (and/or the property you want to converge) using `phonon_dispersion_relations --dos` 
@@ -102,6 +102,7 @@ Now you can repeat these step and try to find the number of iterations necessary
 ### Mixing configurations
 To improve the convergence, it is a good idea to precondition your self-consistent cycle.
 To do this, a simple approach is to use half of the configurations from the previous steps when computing the force constants, so that the force constants at step n is mixed with the results at steps n-1.
+We will explicitly see this in the [zirconium tutorial](../03_Zr) where this mixing is necessary to converge.
 
 ### Observe convergence
 Try to observe the convergence of the self-consistent process

@@ -43,7 +43,7 @@ Now we can do the self-consistent cycle
 
 1. Go back in `sampling.1300K` and create a folder `iter.n`, with n the current step
 2. Copy the input files in the new folder `iter.n`
-3. Compute the forces on the configurations generated at the last step with `sokrates_compute --folder-model ../../module ../iter.n-1/aims_conf* --format=aims --tdep`. This will create the infiles with displacements and forces for TDEP (iter.n-1 is the previous iteration. So if you are in iteration 002, it should read iter.001).
+3. Compute the forces on the configurations generated at the last step with `sokrates_compute --float32 --folder-model ../../module ../iter.n-1/aims_conf* --format=aims --tdep`. This will create the infiles with displacements and forces for TDEP (iter.n-1 is the previous iteration. So if you are in iteration 002, it should read iter.001).
 4. Extract the force constants using `extract_forceconstant -rc2 10`
 5. Copy the outfile force constants as an infile using `ln -sf outfile.forceconstant infile.forceconstant`
 6. Compute the phonons (and/or the property you want to converge) using `phonon_dispersion_relations --dos` 
@@ -64,7 +64,7 @@ The preconditioning of the self-consistent cycle consists simply by re-using con
 In our case, this consists simply in replacing the thid step (when computing the forces by)
 
 ```bash
-sokrates_compute --folder-model ../../module --/iter.n-1/aims_conf* ../iter.n-2/aims_conf* --format=aims --tdep
+sokrates_compute --float32 --folder-model ../../module --/iter.n-1/aims_conf* ../iter.n-2/aims_conf* --format=aims --tdep
 ```
 where `n-1` and `n-2` are respectively the previous iteration and the one even before.
 For example, if you are at iteration `iter.004`, replace `iter.n-1` by `003` and `iter.n-2` by `iter.002`.

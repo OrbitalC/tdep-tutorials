@@ -43,7 +43,7 @@ This should take one or two minutes, and you should now have a file called `traj
 
 Once this is done, let's have a look at the simulation.
 Using the script `plot_equilibration.py` you can observe the evolution of the potential energy and the temperature during the simulation.
-Looking at this plot will give us insight on how many configurations from the start (the equilibriation) should be removed in order to not bias our result.
+Looking at this plot will give us insight on how many configurations from the start (the equilibration) should be removed in order to not bias our result.
 You can run the script using
 ```bash
 python plot_equilibration.py trajectory.traj

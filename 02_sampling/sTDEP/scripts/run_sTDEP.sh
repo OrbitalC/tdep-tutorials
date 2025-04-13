@@ -7,6 +7,7 @@
 # --nconfs X -> Number of configurations in the first step, with X an integer
 # --maximum_frequency X -> Maximum frequency used in the initialization, with X a float
 # --cutoff X -> The cutoff for the second order force constants, with X a float
+set -e
 
 # The temperature
 temperature=300
@@ -130,7 +131,7 @@ do
     else
         samplefiles="../iter.${jjm1}/samples/*/geometry.in "
     fi
-    sokrates_compute --folder-model ../../module $samplefiles --format=aims --tdep
+    sokrates_compute --float32 --folder-model ../../module $samplefiles --format=aims --tdep
 
     # Extract the force constants
     $extractifc
