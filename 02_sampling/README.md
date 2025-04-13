@@ -6,10 +6,10 @@ This means that the force constants extracted with TDEP will already contains in
 In practice, these force constants have to be extracted from configurations representative of the canonical ensemble **at the temperature at which you want to extract properties**.
 Yet another way to say this is that these IFC are a thermal average.
 
-This means that an important part of using TDEP is to gather the configurations before extracting IFCs.
+This means that *an important part of using TDEP is to gather the configurations before extracting IFCs*.
 
 
-Two main approaches exists: using molecular dynamics simulations or a stochastic sampling (sTDEP).
+Two main approaches exists: using molecular dynamics simulations (MD-TDEP) or a stochastic sampling (sTDEP).
 
 
 **IMPORTANT NOTES:**
@@ -68,7 +68,7 @@ You will find a tutorial for sTDEP in the [`sTDEP`](./sTDEP) folder.
 
 **You should always check the convergence of the property you are interested in! We cannot stress this enough!**
 
-On purely harmonic level, this can be the density of states (DOS). Compare the bandstructure and DOS at each step in the self-consistent loop. [There is an explicit example in the sTDEP tutorial](./sTDEP/02_convergence/README.md)
+On purely harmonic level, this can be the density of states (DOS). Compare the bandstructure and DOS at each step in the self-consistent loop for sTDEP. [There is an explicit example in the sTDEP tutorial](./sTDEP/02_convergence/README.md) or with varying number of configurations with MD-TDEP.
 
 
 # Suggested reading
